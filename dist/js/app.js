@@ -3,8 +3,8 @@
 
 var katerbergApp = angular.module('katerbergApp', [
     'ngRoute',
-    'ui.bootstrap',
-    'angular-capitalize-filter'
+    // 'ui.bootstrap',
+    // 'angular-capitalize-filter'
 ]);
 
 katerbergApp.config(["$routeProvider", "$httpProvider", function($routeProvider, $httpProvider) {

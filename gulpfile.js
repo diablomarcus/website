@@ -33,13 +33,13 @@ gulp.task('sass', function() {
 // Move our Dependent CSS
 gulp.task('dependentCss', function() {
     return gulp.src([basedir + 'scss/bootstrap.min.css',
-        'bower_components/font-*/**'])
+        'node_modules/font-awesome/css/*.css'])
         .pipe(gulp.dest('dist/css'));
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src([basedir + 'js/**/*.js', '!' + basedir + 'js/**/*.test.js'])
+    return gulp.src([`${basedir}js/**/*.js`, `!${basedir}js/**/*.test.js`])
         .pipe(ngAnnotate())
         .pipe(concat('app.js'))
         .pipe(gulp.dest('dist/js'))
@@ -50,13 +50,13 @@ gulp.task('scripts', function() {
 
 // Deploy dependency JS
 gulp.task('bower', function() {
-    return gulp.src(['bower_components/angular/angular.min.js',
-        'bower_components/angular-resource/angular-resource.min.js',
-        'bower_components/angular-bootstrap/ui-bootstrap.min.js',
-        'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-        'bower_components/angular-route/angular-route.min.js',
-        'bower_components/angular-capitalize-filter/capitalize.min.js',
-        'bower_components/sugarjs/release/sugar-full.min.js'])
+    const node = 'node_modules/';
+    return gulp.src([node + 'angular/angular.min.js',
+        node + 'angular-resource/angular-resource.min.js',
+        node + 'angular-bootstrap/ui-bootstrap.min.js',
+        node + 'angular-bootstrap/ui-bootstrap-tpls.min.js',
+        node + 'angular-route/angular-route.min.js',
+        node + 'angular-capitalize-filter/capitalize.min.js'])
         .pipe(gulp.dest('dist/js'));
         
 });
